@@ -8,4 +8,35 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!--Profile Activity-->
+    <style name="ProfileContent">
+        <item name="android:textColor">@color/colorRed</item>
+        <item name="android:layout_marginEnd">10dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_alignStart">@id/tv_user_id</item>
+        <item name="android:padding">5dp</item>
+    </style>
+
+    <style name="ProfileLabel">
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:layout_marginEnd">10dp</item>
+        <item name="android:layout_marginTop">30dp</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="ProfileButton" parent="Base.TextAppearance.AppCompat.Button">
+        <item name="android:layout_below">@id/tv_label_user_role</item>
+        <item name="android:layout_marginTop">60dp</item>
+        <item name="textAllCaps">false</item>
+    </style>
+
+    <style name="ProfileButtonSave" parent="ProfileButton">
+        <item name="android:layout_marginStart">80dp</item>
+    </style>
+
+    <style name="ProfileButtonCancel" parent="ProfileButton">
+        <item name="android:layout_marginEnd">80dp</item>
+        <item name="android:layout_alignParentEnd">true</item>
+    </style>
+
 </resources>

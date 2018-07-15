@@ -10,4 +10,6 @@
     <string name="temp_address">48/230 Dinh Cong Thuong</string>
     <string name="temp_phone">0987814015</string>
     <string name="menu_profile">Profile</string>
+    <string name="tv_table_no">No</string>
+    <string name="tv_table_name">Table name</string>
 </resources>

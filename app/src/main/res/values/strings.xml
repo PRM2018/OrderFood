@@ -9,4 +9,5 @@
     <!--Temp data-->
     <string name="temp_address">48/230 Dinh Cong Thuong</string>
     <string name="temp_phone">0987814015</string>
+    <string name="menu_profile">Profile</string>
 </resources>

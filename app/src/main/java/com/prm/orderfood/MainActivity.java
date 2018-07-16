@@ -15,8 +15,9 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btn_profile).setOnClickListener(v -> {
             int empID = Integer.parseInt(
                     ((EditText) findViewById(R.id.et_user_role)).getText().toString());
-            Intent intent = new Intent(this, ProfileActivity.class);
+            Intent intent = new Intent(this, WaiterActivity.class);
             intent.putExtra("empID", empID);
+            intent.putExtra("EMP_NAME", "Đặng Thành Đạt");
             startActivity(intent);
         });
     }

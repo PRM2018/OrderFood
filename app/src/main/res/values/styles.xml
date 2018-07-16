@@ -8,6 +8,32 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!--Waiter Activity-->
+    <style name="WaiterItem">
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+    </style>
+
+    <style name="WaiterItemView">
+        <item name="android:layout_marginLeft">10dp</item>
+    </style>
+
+    <style name="WaiterItemTableNo" parent="WaiterItem">
+        <item name="android:text">@string/tv_table_no</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/colorBlue</item>
+        <item name="android:gravity">center</item>
+
+    </style>
+
+    <style name="WaiterItemTableName" parent="WaiterItem">
+        <item name="android:text">@string/tv_table_name</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:textColor">@color/colorRed</item>
+        <item name="android:gravity">center</item>
+    </style>
+
     <!--Profile Activity-->
     <style name="ProfileContent">
         <item name="android:textColor">@color/colorRed</item>

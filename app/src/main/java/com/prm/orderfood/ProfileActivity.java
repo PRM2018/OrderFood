@@ -8,14 +8,25 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
+
 import java.util.HashMap;
+
+import DAO.EmployeeDAO;
+import Entity.Employee;
 
 public class ProfileActivity extends AppCompatActivity {
 
     private static final String TAG = ProfileActivity.class.getSimpleName();
     private EditText etAddress;
     private EditText etPhone;
+    private TextView etUserID;
+    private TextView etEmpName;
     private Spinner spRole;
+    private EmployeeDAO empDAO;
+    private int empRole;
 
     private final String[] roles = { "Admin", "Waiter", "Cooker" };
 
@@ -29,15 +40,25 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void init() {
+        int empID = getIntent().getIntExtra("empID", 1);
+        Employee emp = new Employee();
+        emp = empDAO.getEmployeeProfile(empID);
+
         etAddress = findViewById(R.id.et_user_address);
         etPhone = findViewById(R.id.et_user_phone);
         spRole = findViewById(R.id.sp_user_role);
+        etUserID  = findViewById(R.id.tv_user_id);
+        etEmpName = findViewById(R.id.tv_user_name);
+
 
         Log.d(TAG, etAddress.getText().toString());
         Log.d(TAG, etPhone.getText().toString());
 
-        etAddress.setText(R.string.temp_address);
-        etPhone.setText(R.string.temp_phone);
+        etAddress.setText(emp.getEmpAddress().toString());
+        etPhone.setText(emp.getEmpPhone().toString());
+        etUserID.setText(emp.getEmpID());
+        etEmpName.setText(emp.getEmpName().toString());
+        empRole = emp.getEmpRole();
     }
 
     private void setup() {
@@ -57,9 +78,9 @@ public class ProfileActivity extends AppCompatActivity {
         spRole.setAdapter(adapter);
 
         // Setup view
-        int role = getIntent().getIntExtra("ROLE", 1);
-        spRole.setSelection(role - 1);
-        switch (role) {
+        //int empID = getIntent().getIntExtra("empID", 1);
+        spRole.setSelection(empRole - 1);
+        switch (empRole) {
             case 1:
                 disableView(etAddress, etPhone);
                 enableView(spRole);

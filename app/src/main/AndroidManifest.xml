@@ -17,8 +17,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".ProfileActivity"/>
-        <activity android:name=".WaiterActivity"
+        <activity
+            android:name=".WaiterActivity"
             android:exported="true">
+        </activity>
+        <activity android:name=".CookerActivity">
         </activity>
     </application>
 

@@ -12,4 +12,6 @@
     <string name="menu_profile">Profile</string>
     <string name="tv_table_no">No</string>
     <string name="tv_table_name">Table name</string>
+    <string name="btn_add_food">Add food</string>
+    <string name="btn_checkout">Checkout</string>
 </resources>

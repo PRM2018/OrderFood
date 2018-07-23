@@ -1,4 +1,4 @@
-package com.prm.orderfood;
+package com.prm.orderfood.UI;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,28 +7,27 @@ import android.util.Log;
 import android.util.SparseArray;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.prm.orderfood.DAO.EmployeeDAO;
 import com.prm.orderfood.Entity.Employee;
+import com.prm.orderfood.R;
 
 public class ProfileActivity extends AppCompatActivity {
 
     private static final String TAG = ProfileActivity.class.getSimpleName();
+
     private EditText etAddress;
     private EditText etPhone;
     private TextView etUserID;
     private TextView etEmpName;
     private Spinner spRole;
+
     private EmployeeDAO empDAO;
     private int empRole;
-    private Button btnSave;
     private Employee emp;
-
 
     private final String[] roles = { "Admin", "Waiter", "Cooker" };
 
@@ -45,32 +44,27 @@ public class ProfileActivity extends AppCompatActivity {
         empDAO = new EmployeeDAO();
         emp = new Employee();
         Intent intent = getIntent();
-        int empID = intent.getIntExtra("empID",1);
+        int empID = intent.getIntExtra("empID", 1);
         emp = empDAO.getEmployeeProfile(empID);
 
         etAddress = findViewById(R.id.et_user_address);
         etPhone = findViewById(R.id.et_user_phone);
         spRole = findViewById(R.id.sp_user_role);
-        etUserID  = findViewById(R.id.tv_user_id);
+        etUserID = findViewById(R.id.tv_user_id);
         etEmpName = findViewById(R.id.tv_user_name);
-
 
         Log.d(TAG, etAddress.getText().toString());
         Log.d(TAG, etPhone.getText().toString());
 
-        etAddress.setText(emp.getEmpAddress().toString());
-        etPhone.setText(emp.getEmpPhone().toString());
+        etAddress.setText(emp.getEmpAddress());
+        etPhone.setText(emp.getEmpPhone());
         etUserID.setText(emp.getRoleName());
-        etEmpName.setText(emp.getEmpName().toString());
+        etEmpName.setText(emp.getEmpName());
         empRole = emp.getEmpRole();
     }
 
     private void setup() {
         // Data for spinner
-//        HashMap<Integer, String> spinnerMap = new HashMap<>();
-//        for (int i = 0; i < 3; i++) {
-//            spinnerMap.put(i + 1, roles[i]);
-//        }
         SparseArray<String> spinnerArray = new SparseArray<>();
         for (int i = 0; i < 3; i++) {
             spinnerArray.put(i + 1, roles[i]);
@@ -94,14 +88,14 @@ public class ProfileActivity extends AppCompatActivity {
                 disableView(spRole);
         }
 
-//        findViewById(R.id.btn_profile_save).setOnClickListener(v -> finish());
+        //        findViewById(R.id.btn_profile_save).setOnClickListener(v -> finish());
         findViewById(R.id.btn_profile_cancel).setOnClickListener(v -> finish());
     }
 
     private void enableView(View... views) {
         for (View view : views) {
             view.setEnabled(true);
-            if(!(view instanceof Spinner)) {
+            if (!(view instanceof Spinner)) {
                 view.setBackgroundColor(getResources().getColor(R.color.colorWhite));
             }
         }
@@ -110,32 +104,33 @@ public class ProfileActivity extends AppCompatActivity {
     private void disableView(View... views) {
         for (View view : views) {
             view.setEnabled(false);
-            if(!(view instanceof Spinner)) {
+            if (!(view instanceof Spinner)) {
                 view.setBackgroundColor(getResources().getColor(R.color.colorGray));
             }
         }
     }
 
-    public void saveInfo(View v){
+    public void saveInfo(View v) {
         empDAO = new EmployeeDAO();
-        btnSave = (Button)findViewById(R.id.btn_profile_save);
 
         etAddress = findViewById(R.id.et_user_address);
         etPhone = findViewById(R.id.et_user_phone);
         spRole = findViewById(R.id.sp_user_role);
-        etUserID  = findViewById(R.id.tv_user_id);
+        etUserID = findViewById(R.id.tv_user_id);
 
         String address = etAddress.getText().toString();
-        String moblie = etPhone.getText().toString();
+        String mobile = etPhone.getText().toString();
         int empID = emp.getEmpID();
         int roleID = emp.getEmpRole();
 
-        boolean check = empDAO.updateEmpInfo(address,moblie,roleID,empID);
-        if(check){
-            Toast.makeText(ProfileActivity.this,"Update profile successfully",Toast.LENGTH_LONG).show();
-        }else{
-            Toast.makeText(ProfileActivity.this,"Update profile unsuccessfully",Toast.LENGTH_LONG).show();
+        boolean check = empDAO.updateEmpInfo(address, mobile, roleID, empID);
+        if (check) {
+            Toast.makeText(ProfileActivity.this, "Update profile successfully", Toast.LENGTH_LONG)
+                    .show();
+        } else {
+            Toast.makeText(ProfileActivity.this, "Update profile unsuccessfully", Toast.LENGTH_LONG)
+                    .show();
         }
-
+        finish();
     }
 }

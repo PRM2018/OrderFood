@@ -1,9 +1,10 @@
-package com.prm.orderfood;
+package com.prm.orderfood.UI;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
+import com.prm.orderfood.R;
 
 public class MainActivity extends AppCompatActivity {
 

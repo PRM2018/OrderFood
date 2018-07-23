@@ -1,22 +1,25 @@
-package com.prm.orderfood;
+package com.prm.orderfood.UI;
 
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
-
-import java.util.ArrayList;
-
 import com.prm.orderfood.Adapter.WaiterTableAdapter;
 import com.prm.orderfood.DAO.EmployeeDAO;
 import com.prm.orderfood.DAO.TableDAO;
 import com.prm.orderfood.Entity.Employee;
 import com.prm.orderfood.Entity.Table;
+import com.prm.orderfood.R;
+import java.util.ArrayList;
 
 public class WaiterActivity extends AppCompatActivity {
+
+    private FloatingActionButton fabAddTable;
+
     private int empID;
     private Employee emp;
     private EmployeeDAO empDAO;
@@ -26,15 +29,22 @@ public class WaiterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_waiter);
+
+        fabAddTable = findViewById(R.id.fab_add_table);
+        fabAddTable.setOnClickListener(v -> {
+            Intent intent = new Intent(this, AddTableActivity.class);
+            startActivity(intent);
+        });
+
         emp = new Employee();
         empDAO = new EmployeeDAO();
         ActionBar actionBar = getSupportActionBar();
         Intent intent = getIntent();
         empID = intent.getIntExtra("empID", 1);
         emp = empDAO.getEmployeeProfile(empID);
-        String name = emp.getEmpName().toString();
+        String name = emp.getEmpName();
         int roleID = emp.getEmpRole();
-        if(actionBar != null) {
+        if (actionBar != null) {
             switch (roleID) {
                 case 1:
                     actionBar.setTitle("Admin: " + name);
@@ -58,7 +68,7 @@ public class WaiterActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == R.id.menu_profile) {
+        if (item.getItemId() == R.id.menu_profile) {
             Intent intent = new Intent(this, ProfileActivity.class);
             // Push data into intent to ProfileActivity
             intent.putExtra("empID", empID);
@@ -67,12 +77,12 @@ public class WaiterActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void setTableAdapter(){
-        ListView listView = (ListView)findViewById(R.id.lv_table_list);
+    public void setTableAdapter() {
+        ListView listView = (ListView) findViewById(R.id.lv_table_list);
         tableDAO = new TableDAO();
-        ArrayList<Table> arrTable = new ArrayList<>();
-        arrTable = tableDAO.getAllTableInfo();
-        WaiterTableAdapter tableAdapter = new WaiterTableAdapter(this,R.layout.item_table,arrTable);
+        ArrayList<Table> arrTable = tableDAO.getAllTableInfo();
+        WaiterTableAdapter tableAdapter =
+                new WaiterTableAdapter(this, R.layout.item_table, arrTable);
         listView.setAdapter(tableAdapter);
     }
 }

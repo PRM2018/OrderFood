@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
                     ((EditText) findViewById(R.id.et_user_role)).getText().toString());
             Intent intent = new Intent(this, WaiterActivity.class);
             intent.putExtra("empID", empID);
-            intent.putExtra("EMP_NAME", "Đặng Thành Đạt");
+            //intent.putExtra("EMP_NAME", "Đặng Thành Đạt");
             startActivity(intent);
         });
     }

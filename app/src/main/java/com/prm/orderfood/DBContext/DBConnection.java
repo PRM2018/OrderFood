@@ -1,4 +1,4 @@
-package DBContext;
+package com.prm.orderfood.DBContext;
 
 import android.content.Context;
 import android.os.StrictMode;
@@ -18,7 +18,7 @@ public class DBConnection {
     public static String Db_name = "AndroidProject";
     static Context mcontext;
     public static Connection Conn = null;
-    public static String Server_ip = "192.168.1.85:1433;";
+    public static String Server_ip = "10.22.161.246:1433;";
 
     public static Connection Getconnection() {
 

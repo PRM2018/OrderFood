@@ -1,21 +1,20 @@
 package com.prm.orderfood;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
-import java.util.HashMap;
-
-import DAO.EmployeeDAO;
-import Entity.Employee;
+import com.prm.orderfood.DAO.EmployeeDAO;
+import com.prm.orderfood.Entity.Employee;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -27,6 +26,9 @@ public class ProfileActivity extends AppCompatActivity {
     private Spinner spRole;
     private EmployeeDAO empDAO;
     private int empRole;
+    private Button btnSave;
+    private Employee emp;
+
 
     private final String[] roles = { "Admin", "Waiter", "Cooker" };
 
@@ -40,8 +42,10 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void init() {
-        int empID = getIntent().getIntExtra("empID", 1);
-        Employee emp = new Employee();
+        empDAO = new EmployeeDAO();
+        emp = new Employee();
+        Intent intent = getIntent();
+        int empID = intent.getIntExtra("empID",1);
         emp = empDAO.getEmployeeProfile(empID);
 
         etAddress = findViewById(R.id.et_user_address);
@@ -56,7 +60,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         etAddress.setText(emp.getEmpAddress().toString());
         etPhone.setText(emp.getEmpPhone().toString());
-        etUserID.setText(emp.getEmpID());
+        etUserID.setText(emp.getRoleName());
         etEmpName.setText(emp.getEmpName().toString());
         empRole = emp.getEmpRole();
     }
@@ -90,7 +94,7 @@ public class ProfileActivity extends AppCompatActivity {
                 disableView(spRole);
         }
 
-        findViewById(R.id.btn_profile_save).setOnClickListener(v -> finish());
+//        findViewById(R.id.btn_profile_save).setOnClickListener(v -> finish());
         findViewById(R.id.btn_profile_cancel).setOnClickListener(v -> finish());
     }
 
@@ -110,5 +114,28 @@ public class ProfileActivity extends AppCompatActivity {
                 view.setBackgroundColor(getResources().getColor(R.color.colorGray));
             }
         }
+    }
+
+    public void saveInfo(View v){
+        empDAO = new EmployeeDAO();
+        btnSave = (Button)findViewById(R.id.btn_profile_save);
+
+        etAddress = findViewById(R.id.et_user_address);
+        etPhone = findViewById(R.id.et_user_phone);
+        spRole = findViewById(R.id.sp_user_role);
+        etUserID  = findViewById(R.id.tv_user_id);
+
+        String address = etAddress.getText().toString();
+        String moblie = etPhone.getText().toString();
+        int empID = emp.getEmpID();
+        int roleID = emp.getEmpRole();
+
+        boolean check = empDAO.updateEmpInfo(address,moblie,roleID,empID);
+        if(check){
+            Toast.makeText(ProfileActivity.this,"Update profile successfully",Toast.LENGTH_LONG).show();
+        }else{
+            Toast.makeText(ProfileActivity.this,"Update profile unsuccessfully",Toast.LENGTH_LONG).show();
+        }
+
     }
 }

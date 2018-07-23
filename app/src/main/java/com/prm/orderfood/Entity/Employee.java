@@ -1,25 +1,29 @@
-package Entity;
+package com.prm.orderfood.Entity;
+
+import java.io.Serializable;
 
 /**
  * Created by Tung Pham on 7/15/2018.
  */
 
-public class Employee {
+public class Employee implements Serializable {
     private int empID;
     private String empName;
     private String empAddress;
     private String empPhone;
     private int empRole;
+    private String roleName;
 
     public Employee() {
     }
 
-    public Employee(int empID, String empName, String empAddress, String empPhone, int empRole) {
+    public Employee(int empID, String empName, String empAddress, String empPhone, int empRole, String roleName) {
         this.empID = empID;
         this.empName = empName;
         this.empAddress = empAddress;
         this.empPhone = empPhone;
         this.empRole = empRole;
+        this.roleName = roleName;
     }
 
     public int getEmpID() {
@@ -60,5 +64,13 @@ public class Employee {
 
     public void setEmpRole(int empRole) {
         this.empRole = empRole;
+    }
+
+    public String getRoleName() {
+        return roleName;
+    }
+
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
     }
 }

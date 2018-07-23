@@ -1,4 +1,4 @@
-package Entity;
+package com.prm.orderfood.Entity;
 
 public class Account {
     private String accName;

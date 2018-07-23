@@ -1,6 +1,7 @@
-package Entity;
+package com.prm.orderfood.Entity;
 
 public class Employee {
+    private int eId;
     private String eName;
     private String eAddress;
     private String ePhone;
@@ -14,6 +15,22 @@ public class Employee {
         this.eAddress = eAddress;
         this.ePhone = ePhone;
         this.roleId = roleId;
+    }
+
+    public Employee(int eId, String eName, String eAddress, String ePhone, int roleId) {
+        this.eId = eId;
+        this.eName = eName;
+        this.eAddress = eAddress;
+        this.ePhone = ePhone;
+        this.roleId = roleId;
+    }
+
+    public int geteId() {
+        return eId;
+    }
+
+    public void seteId(int eId) {
+        this.eId = eId;
     }
 
     public String geteName() {
@@ -46,5 +63,10 @@ public class Employee {
 
     public void setRoleId(int roleId) {
         this.roleId = roleId;
+    }
+
+    @Override
+    public String toString() {
+        return  eName ;
     }
 }

@@ -26,7 +26,9 @@
         <activity android:name=".CookerActivity" />
         <activity android:name=".AddEmployeeActivity" />
         <activity android:name=".ManageFoodActivity" />
-        <activity android:name=".AddFoodActivity"></activity>
+        <activity android:name=".AddFoodActivity" />
+        <activity android:name=".EditEmployeeInfoActivity" />
+        <activity android:name=".EditFoodInfoActivity"></activity>
     </application>
 
 </manifest>

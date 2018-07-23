@@ -8,10 +8,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import java.sql.SQLException;
-import java.util.List;
 
-import Entity.Account;
-import Model.AccountModel;
+import com.prm.orderfood.Model.AccountModel;
 
 public class MainActivity extends AppCompatActivity {
     EditText txtAcc;
@@ -29,8 +27,9 @@ public class MainActivity extends AppCompatActivity {
         String acc=txtAcc.getText().toString();
         String pass=txtPass.getText().toString();
 
+
         AccountModel am=new AccountModel();
-        boolean checkExit=am.checkAccountAndPass(acc,pass);
+       boolean checkExit=am.checkAccountAndPass(acc,pass);
         if(checkExit==true){
             int checkRole=am.checkRole(acc,pass);
             if(checkRole==1) {
@@ -43,8 +42,9 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         if(checkExit==false){
-            Toast.makeText(this,"This Account didn't exist please check again",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,"Wrong account or pass",Toast.LENGTH_LONG).show();
         }
 
     }
+
 }

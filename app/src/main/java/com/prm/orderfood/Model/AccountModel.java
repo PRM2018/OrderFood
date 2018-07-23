@@ -1,4 +1,4 @@
-package Model;
+package com.prm.orderfood.Model;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -7,10 +7,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import DBContext.DBConnection;
-import Entity.Account;
-import Entity.Employee;
-import Entity.Role;
+import com.prm.orderfood.DBContext.DBConnection;
+import com.prm.orderfood.Entity.Employee;
+import com.prm.orderfood.Entity.Role;
 
 public class AccountModel {
     // Lấy Role đưa vào spinner
@@ -29,19 +28,7 @@ public class AccountModel {
         return list;
     }
 
-    //Add new employee
-    public void addEmployee(Employee e) throws SQLException {
-        DBConnection db=new DBConnection();
-        Connection connection=db.Getconnection();
-        Statement statement=connection.createStatement();
-        String eName=e.geteName();
-        String eAddress=e.geteAddress();
-        String ePhone=e.getePhone();
-        int roleId=e.getRoleId();
-        String sql="insert into EmployeeTBL values('"+eName+"','"+eAddress+"','"+ePhone+"',"+roleId+")";
-        statement.executeUpdate(sql);
-        connection.close();
-    }
+
 
     // Kiểm tra ở trang login
     public boolean checkAccountAndPass(String acc,String pass) throws SQLException {

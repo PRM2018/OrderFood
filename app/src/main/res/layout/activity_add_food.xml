@@ -5,91 +5,106 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".AddFoodActivity">
+    tools:context=".AddFoodActivity"
+    tools:layout_editor_absoluteY="81dp">
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="TextView"
+        android:layout_marginStart="24dp"
+        android:text="New Employee"
+        android:textSize="50dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/txtName"
+        android:id="@+id/et_employee_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="75dp"
-        android:ems="10"
+        android:layout_marginTop="116dp"
         android:background="@android:color/white"
-        android:inputType="textPersonName"
+        android:ems="10"
         android:hint=" Name"
+        android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/txtPrice"
+        android:id="@+id/et_food_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="23dp"
-        android:ems="10"
         android:background="@android:color/white"
+        android:ems="10"
         android:hint=" Price"
         android:inputType="numberDecimal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtName" />
+        app:layout_constraintTop_toBottomOf="@+id/et_employee_name" />
 
     <EditText
-        android:id="@+id/txtQuantity"
+        android:id="@+id/et_food_quantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="27dp"
-        android:ems="10"
+        android:layout_marginTop="32dp"
         android:background="@android:color/white"
+        android:ems="10"
         android:hint=" Quantity"
         android:inputType="number"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPrice" />
+        app:layout_constraintTop_toBottomOf="@+id/et_food_price" />
 
     <EditText
-        android:id="@+id/txtImg"
+        android:id="@+id/et_food_img"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="31dp"
-        android:ems="10"
         android:background="@android:color/white"
+        android:ems="10"
+        android:hint="Image "
         android:inputType="textPersonName"
-        android:hint=" Url Image"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtQuantity" />
+        app:layout_constraintTop_toBottomOf="@+id/et_food_quantity" />
 
     <EditText
-        android:id="@+id/txtDes"
+        android:id="@+id/et_food_des"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="25dp"
-        android:ems="10"
+        android:layout_marginTop="24dp"
         android:background="@android:color/white"
-        android:inputType="textPersonName"
+        android:ems="10"
         android:hint=" Description"
+        android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtImg" />
+        app:layout_constraintTop_toBottomOf="@+id/et_food_img" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/bt_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="17dp"
-        android:layout_marginEnd="17dp"
-        android:text="Save"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="127dp"
+        android:layout_marginStart="130dp"
         android:background="@color/button"
+        android:onClick="addNewFood"
+        android:text="Add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/bt_cancel"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/bt_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="39dp"
+        android:onClick="cancel"
+        android:text="Cancel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 </android.support.constraint.ConstraintLayout>

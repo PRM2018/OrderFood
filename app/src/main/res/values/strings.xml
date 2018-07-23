@@ -6,4 +6,13 @@
     <string name="tab_text_3">Tab 3</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
+
+    <string name="tv_label_address">Address:</string>
+    <string name="tv_label_phone_number">Phone:</string>
+    <string name="btn_profile_save">Save</string>
+    <string name="btn_profile_cancel">Cancel</string>
+    <string name="tv_label_role">Role:</string>
+    <string name="menu_profile">Profile</string>
+    <string name="tv_table_no">No</string>
+    <string name="tv_table_name">Table name</string>
 </resources>

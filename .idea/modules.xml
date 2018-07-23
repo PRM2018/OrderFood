@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/OrderFood.iml" filepath="$PROJECT_DIR$/OrderFood.iml" />
+      <module fileurl="file://F:\FPT_EDU\CHUYEN NGHANH HEP\PRM_MOBILE\Final_Project\tortoise_Project\Merge_TEST\OrderFood\OrderFood.iml" filepath="F:\FPT_EDU\CHUYEN NGHANH HEP\PRM_MOBILE\Final_Project\tortoise_Project\Merge_TEST\OrderFood\OrderFood.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

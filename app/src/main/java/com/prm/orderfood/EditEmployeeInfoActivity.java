@@ -82,16 +82,14 @@ public class EditEmployeeInfoActivity extends AppCompatActivity {
 
 
     public void cancel(View view) {
-        Intent intent = new Intent(getApplicationContext(), AdminActivity.class);
-        startActivity(intent);
+        finish();
     }
 
     public void DeleteEmployee(View view) throws SQLException {
         try {
             EmployeeModel fm = new EmployeeModel();
             fm.deleteEmployee(eId);
-            Intent intent = new Intent(getApplicationContext(), AdminActivity.class);
-            startActivity(intent);
+            finish();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -106,7 +104,6 @@ public class EditEmployeeInfoActivity extends AppCompatActivity {
         Employee employee = new Employee(eId, eName, eAddress, ePhone, roleId);
         EmployeeModel em = new EmployeeModel();
         em.editEmployee(employee);
-        Intent intent = new Intent(getApplicationContext(), AdminActivity.class);
-        startActivity(intent);
+        finish();
     }
 }

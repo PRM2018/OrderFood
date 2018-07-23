@@ -5,6 +5,7 @@ import com.prm.orderfood.Entity.Employee;
 import com.prm.orderfood.Entity.Role;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -12,6 +13,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EmployeeModel {
+
+    public void closeConnection(Connection con, PreparedStatement ps, ResultSet rs) {
+        if (rs != null) {
+            try {
+                rs.close();
+            } catch (SQLException e) { /* ignored */}
+        }
+        if (ps != null) {
+            try {
+                ps.close();
+            } catch (SQLException e) { /* ignored */}
+        }
+        if (con != null) {
+            try {
+                con.close();
+            } catch (SQLException e) { /* ignored */}
+        }
+    }
+
     //Add new employee
     public void addEmployee(Employee e) throws SQLException {
         DBConnection db = new DBConnection();
@@ -90,5 +110,33 @@ public class EmployeeModel {
                 "where employeeId=" + e.geteId();
         statement.executeUpdate(sql);
         connection.close();
+    }
+
+    public ArrayList<Employee> getAllEmpForAdmin() {
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        ArrayList<Employee> empLst = new ArrayList<>();
+        try {
+            String sql = "select emp.*,role.roleName from EmployeeTBL emp left join RoleTBL role on emp.roleId = role.roleId";
+            con = DBConnection.Getconnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Employee emp = new Employee();
+                emp.seteId(rs.getInt(1));
+                emp.seteName(rs.getString(2));
+                emp.seteAddress(rs.getString(3));
+                emp.setePhone(rs.getString(4));
+                emp.setRoleId(rs.getInt(5));
+                emp.seteRole(rs.getString(6));
+                empLst.add(emp);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection(con, ps, rs);
+        }
+        return empLst;
     }
 }

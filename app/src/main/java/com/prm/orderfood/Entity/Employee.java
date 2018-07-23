@@ -6,6 +6,7 @@ public class Employee {
     private String eAddress;
     private String ePhone;
     private int roleId;
+    private String eRole;
 
     public Employee() {
     }
@@ -23,6 +24,15 @@ public class Employee {
         this.eAddress = eAddress;
         this.ePhone = ePhone;
         this.roleId = roleId;
+    }
+
+    public Employee(int eId, String eName, String eAddress, String ePhone, int roleId, String eRole) {
+        this.eId = eId;
+        this.eName = eName;
+        this.eAddress = eAddress;
+        this.ePhone = ePhone;
+        this.roleId = roleId;
+        this.eRole = eRole;
     }
 
     public int geteId() {
@@ -63,6 +73,14 @@ public class Employee {
 
     public void setRoleId(int roleId) {
         this.roleId = roleId;
+    }
+
+    public String geteRole() {
+        return eRole;
+    }
+
+    public void seteRole(String eRole) {
+        this.eRole = eRole;
     }
 
     @Override
